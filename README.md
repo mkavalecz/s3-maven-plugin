@@ -11,9 +11,9 @@
 `s3-maven-plugin` has been released to the Maven Central Repository. It can be downloaded and configured as usual via the maven dependency management:
 
     <dependency>
-        <groupId>com.software-crafter</groupId>
+        <groupId>com.github.mkavalecz</groupId>
         <artifactId>s3-maven-plugin</artifactId>
-        <version>1.0.0</version>
+        <version>1.0.1</version>
     </dependency>
 
 Please follow the configuration instructions as described below.
@@ -21,11 +21,17 @@ Please follow the configuration instructions as described below.
 ## POM file configuration example
 
     <build>
+        <pluginRepositories>
+            <pluginRepository>
+                <id>jitpack.io</id>
+                <url>https://jitpack.io</url>
+            </pluginRepository>
+        </pluginRepositories>
         <plugins>
             <plugin>
-                <groupId>com.software-crafter</groupId>
+                <groupId>com.github.mkavalecz</groupId>
                 <artifactId>s3-maven-plugin</artifactId>
-                <version>1.0.0</version>
+                <version>1.0.1</version>
                 <configuration>
                     <accessKey>${s3.accessKey}</accessKey>
                     <secretKey>${s3.secretKey}</secretKey>
