@@ -1,12 +1,12 @@
 package com.software.crafter.core.common;
 
+import java.io.File;
+
 import com.amazonaws.services.s3.AmazonS3Client;
 import com.amazonaws.services.s3.model.GetObjectRequest;
 import com.software.crafter.core.artifact.Artifact;
 import com.software.crafter.core.artifact.Download;
 import com.software.crafter.core.artifact.Upload;
-
-import java.io.File;
 
 /**
  *
@@ -16,7 +16,7 @@ import java.io.File;
  */
 public class GoalExecutorImpl implements GoalExecutor {
 
-    private AmazonS3Client s3Client;
+    private final AmazonS3Client s3Client;
 
     public GoalExecutorImpl(AmazonS3Client s3Client) {
         this.s3Client = s3Client;

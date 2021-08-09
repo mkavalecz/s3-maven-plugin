@@ -1,11 +1,12 @@
 package com.software.crafter.util;
 
-import com.software.crafter.core.artifact.Download;
-import com.software.crafter.core.artifact.Upload;
-import org.twdata.maven.mojoexecutor.MojoExecutor;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import org.twdata.maven.mojoexecutor.MojoExecutor;
+
+import com.software.crafter.core.artifact.Download;
+import com.software.crafter.core.artifact.Upload;
 
 /**
  * @author Roman Zimnik
@@ -33,10 +34,7 @@ public class MojoExecutorHelper {
             children.add(parseDownload(download));
         }
 
-        MojoExecutor.Element[] childrenArray =
-                children.toArray(new MojoExecutor.Element[children.size()]);
-
-        return childrenArray;
+        return children.toArray(new MojoExecutor.Element[children.size()]);
     }
 
     /**
@@ -70,10 +68,7 @@ public class MojoExecutorHelper {
             children.add(parseUpload(upload));
         }
 
-        MojoExecutor.Element[] childrenArray =
-                children.toArray(new MojoExecutor.Element[children.size()]);
-
-        return childrenArray;
+        return children.toArray(new MojoExecutor.Element[children.size()]);
     }
 
     /**

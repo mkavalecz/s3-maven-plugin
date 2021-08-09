@@ -23,12 +23,10 @@ public class AWSClientFactory {
         BasicAWSCredentials awsCredentials = new BasicAWSCredentials(accessKey, secretKey);
         AWSStaticCredentialsProvider credentialsProvider = new AWSStaticCredentialsProvider(awsCredentials);
 
-        AmazonS3Client s3Client = (AmazonS3Client) AmazonS3ClientBuilder
+        return (AmazonS3Client) AmazonS3ClientBuilder
                 .standard()
                 .withCredentials(credentialsProvider)
                 .withRegion("us-east-1")
                 .build();
-
-        return s3Client;
     }
 }

@@ -1,13 +1,14 @@
 package com.software.crafter.core.handler;
 
+import java.util.List;
+
+import org.apache.maven.plugin.logging.Log;
+
 import com.amazonaws.services.s3.AmazonS3Client;
 import com.software.crafter.core.artifact.Upload;
 import com.software.crafter.core.common.GoalExecutor;
 import com.software.crafter.core.common.GoalExecutorImpl;
 import com.software.crafter.util.AWSClientFactory;
-import org.apache.maven.plugin.logging.Log;
-
-import java.util.List;
 
 /**
  *
@@ -17,7 +18,7 @@ import java.util.List;
  */
 public class UploadHandler {
 
-    private Log log;
+    private final Log log;
 
     private AmazonS3Client s3Client;
 
@@ -32,11 +33,11 @@ public class UploadHandler {
 
     public void uploadAllObjects(List<Upload> uploads) {
 
-        uploads.stream().forEach(u -> this.log.info(
+        uploads.forEach(u -> this.log.info(
                 "Object URI: " + u.getPath()
                         + u.getFileName()));
 
-        uploads.stream().forEach(u -> uploadObjectFromS3(u));
+        uploads.forEach(this::uploadObjectFromS3);
     }
 
     private void uploadObjectFromS3(Upload upload) {
