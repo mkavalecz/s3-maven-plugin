@@ -24,7 +24,6 @@ public class GoalExecutorImpl implements GoalExecutor {
 
     @Override
     public void executeGoal(Artifact artifact) {
-
         if (artifact instanceof Download) {
             executeDownload(s3Client, (Download) artifact);
         } else if (artifact instanceof Upload) {
@@ -33,15 +32,16 @@ public class GoalExecutorImpl implements GoalExecutor {
     }
 
     private void executeDownload(AmazonS3Client s3Client, Download download) {
-
-        final String DOWNLOAD_PATH = download.getPath()
-                + download.getFileName();
+        final String DOWNLOAD_PATH = download.getPath() + download.getFileName();
 
         try {
-            s3Client.getObject(new GetObjectRequest(
+            s3Client.getObject(
+                new GetObjectRequest(
                     download.getBucketName(),
-                    download.getFileName()),
-                    new File(DOWNLOAD_PATH));
+                    download.getFileName()
+                ),
+                new File(DOWNLOAD_PATH)
+            );
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -49,15 +49,14 @@ public class GoalExecutorImpl implements GoalExecutor {
     }
 
     private void executeUpload(AmazonS3Client s3Client, Upload upload) {
-
-        final String OBJECT_PATH = upload.getPath()
-                + upload.getFileName();
+        final String OBJECT_PATH = upload.getPath() + upload.getFileName();
 
         try {
             s3Client.putObject(
-                    upload.getBucketName(),
-                    upload.getFileName(),
-                    OBJECT_PATH);
+                upload.getBucketName(),
+                upload.getFileName(),
+                new File(OBJECT_PATH)
+            );
 
         } catch (Exception e) {
             e.printStackTrace();

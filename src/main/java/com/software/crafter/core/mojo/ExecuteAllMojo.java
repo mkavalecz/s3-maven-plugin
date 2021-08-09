@@ -61,6 +61,7 @@ public class ExecuteAllMojo extends AbstractCustomMojo {
                 configuration(
                         element("accessKey", this.accessKey),
                         element("secretKey", this.secretKey),
+                        element("region", this.region),
                         MojoExecutorHelper.getDownloadsElement(downloads)
                 ),
                 executionEnvironment(
@@ -81,6 +82,7 @@ public class ExecuteAllMojo extends AbstractCustomMojo {
                 configuration(
                         element("accessKey", this.accessKey),
                         element("secretKey", this.secretKey),
+                        element("region", this.region),
                         MojoExecutorHelper.getUploadsElement(uploads)
                 ),
                 executionEnvironment(

@@ -32,16 +32,13 @@ public class DownloadHandler {
     }
 
     public void downloadAllObjects(List<Download> downloads) {
-
-        downloads.forEach(d -> this.log.info(
-                String.format("Download %s -> %s/%s: ", d.getPath(), d.getBucketName(), d.getFileName())
-        ));
-
-        downloads.forEach(this::downloadObjectFromS3);
+        downloads.forEach(d -> {
+            this.log.info(String.format("Download %s -> %s/%s: ", d.getPath(), d.getBucketName(), d.getFileName()));
+            this.downloadObjectFromS3(d);
+        });
     }
 
     private void downloadObjectFromS3(Download download) {
-
         GoalExecutor executor = new GoalExecutorImpl(this.s3Client);
         executor.executeGoal(download);
     }
