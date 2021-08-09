@@ -55,7 +55,7 @@ public class ExecuteAllMojo extends AbstractCustomMojo {
                 plugin(
                         groupId("com.github.mkavalecz"),
                         artifactId("s3-maven-plugin"),
-                        version("1.0.1")
+                        version("1.0.2")
                 ),
                 goal("download"),
                 configuration(
@@ -75,7 +75,7 @@ public class ExecuteAllMojo extends AbstractCustomMojo {
                 plugin(
                         groupId("com.github.mkavalecz"),
                         artifactId("s3-maven-plugin"),
-                        version("1.0.1")
+                        version("1.0.2")
                 ),
                 goal("upload"),
                 configuration(
