@@ -31,7 +31,7 @@ public class UploadHandler {
 
 	public void uploadAllObjects(List<Upload> uploads) {
 		uploads.forEach(u -> {
-			this.log.info(String.format("Upload %s -> %s/%s: ", u.getPath(), u.getBucketName(), u.getFileName()));
+			this.log.info(String.format("Upload %s -> %s/%s", u.getPath(), u.getBucketName(), u.getFileName()));
 			this.uploadObjectFromS3(u);
 		});
 	}

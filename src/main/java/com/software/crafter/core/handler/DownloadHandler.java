@@ -31,7 +31,7 @@ public class DownloadHandler {
 
 	public void downloadAllObjects(List<Download> downloads) {
 		downloads.forEach(d -> {
-			this.log.info(String.format("Download %s -> %s/%s: ", d.getPath(), d.getBucketName(), d.getFileName()));
+			this.log.info(String.format("Download %s -> %s/%s", d.getPath(), d.getBucketName(), d.getFileName()));
 			this.downloadObjectFromS3(d);
 		});
 	}
