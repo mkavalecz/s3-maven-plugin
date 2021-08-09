@@ -14,26 +14,25 @@ import com.software.crafter.core.handler.DownloadHandler;
  *
  * @author Roman Zimnik
  * @version 1.0.0
- *
  */
-@Mojo( name = "download", defaultPhase = LifecyclePhase.GENERATE_RESOURCES)
+@Mojo(name = "download", defaultPhase = LifecyclePhase.GENERATE_RESOURCES)
 public class DownloadMojo extends AbstractCustomMojo {
 
-    /**
-     * Main method for the download goal.
-     * Instantiates a DownlandHandler which takes care of the complete execution of the download goal.
-     *
-     * @throws MojoExecutionException
-     * @throws MojoFailureException
-     */
-    @Override
-    public void execute() throws MojoExecutionException, MojoFailureException {
-        getLog().info("AWS AccessKey: " + this.accessKey);
-        getLog().info("AWS SecretKey (first 5 chars): " + String.format("%.5s", this.secretKey));
-        getLog().info("AWS Region: " + this.region);
-        getLog().info("Downloads: " + this.downloads.size());
+	/**
+	 * Main method for the download goal.
+	 * Instantiates a DownlandHandler which takes care of the complete execution of the download goal.
+	 *
+	 * @throws MojoExecutionException
+	 * @throws MojoFailureException
+	 */
+	@Override
+	public void execute() throws MojoExecutionException, MojoFailureException {
+		getLog().info("AWS AccessKey: " + this.accessKey);
+		getLog().info("AWS SecretKey (first 5 chars): " + String.format("%.5s", this.secretKey));
+		getLog().info("AWS Region: " + this.region);
+		getLog().info("Downloads: " + this.downloads.size());
 
-        DownloadHandler dHandler = new DownloadHandler(this.accessKey, this.secretKey, this.region, getLog());
-        dHandler.downloadAllObjects(this.downloads);
-    }
+		DownloadHandler dHandler = new DownloadHandler(this.accessKey, this.secretKey, this.region, getLog());
+		dHandler.downloadAllObjects(this.downloads);
+	}
 }
