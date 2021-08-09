@@ -22,13 +22,13 @@ public class UploadHandler {
 
     private AmazonS3Client s3Client;
 
-    public UploadHandler(String accesskey, String secretkey, Log log) {
+    public UploadHandler(String accesskey, String secretkey, String region, Log log) {
         this.log = log;
-        init(accesskey, secretkey);
+        init(accesskey, secretkey, region);
     }
 
-    private void init(String accesskey, String secretkey) {
-        this.s3Client = AWSClientFactory.createAmazonS3Client(accesskey, secretkey);
+    private void init(String accesskey, String secretkey, String region) {
+        this.s3Client = AWSClientFactory.createAmazonS3Client(accesskey, secretkey, region);
     }
 
     public void uploadAllObjects(List<Upload> uploads) {

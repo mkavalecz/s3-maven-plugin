@@ -1,6 +1,14 @@
 package com.software.crafter.core.mojo;
 
-import com.software.crafter.util.MojoExecutorHelper;
+import static org.twdata.maven.mojoexecutor.MojoExecutor.artifactId;
+import static org.twdata.maven.mojoexecutor.MojoExecutor.configuration;
+import static org.twdata.maven.mojoexecutor.MojoExecutor.element;
+import static org.twdata.maven.mojoexecutor.MojoExecutor.executionEnvironment;
+import static org.twdata.maven.mojoexecutor.MojoExecutor.goal;
+import static org.twdata.maven.mojoexecutor.MojoExecutor.groupId;
+import static org.twdata.maven.mojoexecutor.MojoExecutor.plugin;
+import static org.twdata.maven.mojoexecutor.MojoExecutor.version;
+
 import org.apache.maven.execution.MavenSession;
 import org.apache.maven.plugin.BuildPluginManager;
 import org.apache.maven.plugin.MojoExecutionException;
@@ -9,7 +17,7 @@ import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
 import org.twdata.maven.mojoexecutor.MojoExecutor;
 
-import static org.twdata.maven.mojoexecutor.MojoExecutor.*;
+import com.software.crafter.util.MojoExecutorHelper;
 
 /**
  * This mojo executes both download goal and upload goal.
@@ -45,9 +53,9 @@ public class ExecuteAllMojo extends AbstractCustomMojo {
 
         MojoExecutor.executeMojo(
                 plugin(
-                        groupId("com.software.crafter"),
+                        groupId("com.github.mkavalecz"),
                         artifactId("s3-maven-plugin"),
-                        version("1.0.0")
+                        version("1.0.1")
                 ),
                 goal("download"),
                 configuration(
@@ -65,9 +73,9 @@ public class ExecuteAllMojo extends AbstractCustomMojo {
 
         MojoExecutor.executeMojo(
                 plugin(
-                        groupId("com.software.crafter"),
+                        groupId("com.github.mkavalecz"),
                         artifactId("s3-maven-plugin"),
-                        version("1.0.0")
+                        version("1.0.1")
                 ),
                 goal("upload"),
                 configuration(

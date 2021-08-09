@@ -22,13 +22,13 @@ public class DownloadHandler {
 
     private AmazonS3Client s3Client;
 
-    public DownloadHandler(String accesskey, String secretkey, Log log) {
+    public DownloadHandler(String accesskey, String secretkey, String region, Log log) {
         this.log = log;
-        init(accesskey, secretkey);
+        init(accesskey, secretkey, region);
     }
 
-    private void init(String accesskey, String secretkey) {
-        this.s3Client = AWSClientFactory.createAmazonS3Client(accesskey, secretkey);
+    private void init(String accesskey, String secretkey, String region) {
+        this.s3Client = AWSClientFactory.createAmazonS3Client(accesskey, secretkey, region);
     }
 
     public void downloadAllObjects(List<Download> downloads) {

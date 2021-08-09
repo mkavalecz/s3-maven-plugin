@@ -1,11 +1,12 @@
 package com.software.crafter.core.mojo;
 
-import com.software.crafter.core.artifact.Download;
-import com.software.crafter.core.artifact.Upload;
+import java.util.List;
+
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugins.annotations.Parameter;
 
-import java.util.List;
+import com.software.crafter.core.artifact.Download;
+import com.software.crafter.core.artifact.Upload;
 
 /**
  *
@@ -20,6 +21,9 @@ public abstract class AbstractCustomMojo extends AbstractMojo {
 
     @Parameter( property = "secretKey")
     protected String secretKey;
+
+    @Parameter( property = "region")
+    protected String region;
 
     @Parameter( property = "downloads" )
     protected List<Download> downloads;

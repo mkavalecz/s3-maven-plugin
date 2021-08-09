@@ -13,12 +13,13 @@ public class AWSClientFactory {
 
     /**
      *
-     * @param accessKey individual accessKey from your s3 platform.
-     * @param secretKey individual secretKey from your s3 platform.
+     * @param accessKey individual accessKey of your s3 platform.
+     * @param secretKey individual secretKey of your s3 platform.
      *                  Both need full read and write access.
+     * @param region region of your s3 platform.
      * @return
      */
-    public static AmazonS3Client createAmazonS3Client(String accessKey, String secretKey) {
+    public static AmazonS3Client createAmazonS3Client(String accessKey, String secretKey, String region) {
 
         BasicAWSCredentials awsCredentials = new BasicAWSCredentials(accessKey, secretKey);
         AWSStaticCredentialsProvider credentialsProvider = new AWSStaticCredentialsProvider(awsCredentials);
@@ -26,7 +27,7 @@ public class AWSClientFactory {
         return (AmazonS3Client) AmazonS3ClientBuilder
                 .standard()
                 .withCredentials(credentialsProvider)
-                .withRegion("us-east-1")
+                .withRegion(region)
                 .build();
     }
 }

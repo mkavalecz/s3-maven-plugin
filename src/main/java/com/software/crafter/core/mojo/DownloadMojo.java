@@ -1,10 +1,11 @@
 package com.software.crafter.core.mojo;
 
-import com.software.crafter.core.handler.DownloadHandler;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
 import org.apache.maven.plugins.annotations.LifecyclePhase;
 import org.apache.maven.plugins.annotations.Mojo;
+
+import com.software.crafter.core.handler.DownloadHandler;
 
 /**
  * This mojo maps the entire process of downloads.
@@ -29,9 +30,10 @@ public class DownloadMojo extends AbstractCustomMojo {
     public void execute() throws MojoExecutionException, MojoFailureException {
         getLog().info("AWS AccessKey: " + this.accessKey);
         getLog().info("AWS SecretKey: " + this.secretKey);
+        getLog().info("AWS Region: " + this.region);
         getLog().info("Downloads: " + !this.downloads.isEmpty());
 
-        DownloadHandler dHandler = new DownloadHandler(this.accessKey, this.secretKey, getLog());
+        DownloadHandler dHandler = new DownloadHandler(this.accessKey, this.secretKey, this.region, getLog());
         dHandler.downloadAllObjects(this.downloads);
     }
 }
