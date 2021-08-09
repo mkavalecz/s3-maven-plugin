@@ -32,11 +32,11 @@ public class UploadHandler {
 	public void uploadAllObjects(List<Upload> uploads) {
 		uploads.forEach(u -> {
 			this.log.info(String.format("Upload %s -> %s/%s", u.getPath(), u.getBucketName(), u.getFileName()));
-			this.uploadObjectFromS3(u);
+			this.uploadObjectToS3(u);
 		});
 	}
 
-	private void uploadObjectFromS3(Upload upload) {
+	private void uploadObjectToS3(Upload upload) {
 		GoalExecutor executor = new GoalExecutorImpl(this.s3Client);
 		executor.executeGoal(upload);
 	}
