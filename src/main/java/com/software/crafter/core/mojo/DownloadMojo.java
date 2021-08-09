@@ -29,9 +29,9 @@ public class DownloadMojo extends AbstractCustomMojo {
     @Override
     public void execute() throws MojoExecutionException, MojoFailureException {
         getLog().info("AWS AccessKey: " + this.accessKey);
-        getLog().info("AWS SecretKey: " + this.secretKey);
+        getLog().info("AWS SecretKey (first 5 chars): " + String.format("%.5s", this.secretKey));
         getLog().info("AWS Region: " + this.region);
-        getLog().info("Downloads: " + !this.downloads.isEmpty());
+        getLog().info("Downloads: " + this.downloads.size());
 
         DownloadHandler dHandler = new DownloadHandler(this.accessKey, this.secretKey, this.region, getLog());
         dHandler.downloadAllObjects(this.downloads);

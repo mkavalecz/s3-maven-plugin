@@ -27,9 +27,9 @@ public class UploadMojo extends AbstractCustomMojo {
     @Override
     public void execute() throws MojoExecutionException, MojoFailureException {
         getLog().info("AWS AccessKey: " + this.accessKey);
-        getLog().info("AWS SecretKey: " + this.secretKey);
+        getLog().info("AWS SecretKey (first 5 chars): " + String.format("%.5s", this.secretKey));
         getLog().info("AWS Region: " + this.region);
-        getLog().info("Uploads: " + !this.uploads.isEmpty());
+        getLog().info("Uploads: " + this.uploads.size());
 
         UploadHandler uHandler = new UploadHandler(this.accessKey, this.secretKey, this.region, getLog());
         uHandler.uploadAllObjects(this.uploads);
