@@ -13,7 +13,7 @@
     <dependency>
         <groupId>com.github.mkavalecz</groupId>
         <artifactId>s3-maven-plugin</artifactId>
-        <version>1.0.2</version>
+        <version>1.0.3</version>
     </dependency>
 
 Please follow the configuration instructions as described below.
@@ -31,7 +31,7 @@ Please follow the configuration instructions as described below.
             <plugin>
                 <groupId>com.github.mkavalecz</groupId>
                 <artifactId>s3-maven-plugin</artifactId>
-                <version>1.0.2</version>
+                <version>1.0.3</version>
                 <configuration>
                     <accessKey>${s3.accessKey}</accessKey>
                     <secretKey>${s3.secretKey}</secretKey>
